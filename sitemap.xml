@@ -2,18 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/about/index.html</loc>
+    <loc>http://example.com/2023/08/24/%E6%95%B0%E7%BB%84/</loc>
     
-    <lastmod>2023-08-23</lastmod>
+    <lastmod>2023-08-24</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/timeline/index.html</loc>
+    <loc>http://example.com/2023/08/24/%E9%93%BE%E8%A1%A8/</loc>
     
-    <lastmod>2023-08-23</lastmod>
+    <lastmod>2023-08-24</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -22,7 +22,16 @@
   <url>
     <loc>http://example.com/link/index.html</loc>
     
-    <lastmod>2023-08-22</lastmod>
+    <lastmod>2023-08-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/about/index.html</loc>
+    
+    <lastmod>2023-08-23</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -46,24 +55,36 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>http://example.com/2023/08/23/hello-world/</loc>
-    
-    <lastmod>2023-08-22</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   <url>
     <loc>http://example.com/</loc>
-    <lastmod>2023-08-23</lastmod>
+    <lastmod>2023-08-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
+  <url>
+    <loc>http://example.com/tags/%E6%95%B0%E7%BB%84/</loc>
+    <lastmod>2023-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/%E9%93%BE%E8%A1%A8/</loc>
+    <lastmod>2023-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
+  
+  <url>
+    <loc>http://example.com/categories/%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2023-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
 </urlset>
