@@ -12,7 +12,7 @@ https://palette-k.github.io/tags/index.html
 https://palette-k.github.io/
 https://palette-k.github.io/tags/java/
 https://palette-k.github.io/tags/RocketMQ/
-https://palette-k.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/
 https://palette-k.github.io/tags/%E6%95%B0%E7%BB%84/
+https://palette-k.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/
 https://palette-k.github.io/tags/%E9%93%BE%E8%A1%A8/
 https://palette-k.github.io/categories/%E7%AE%97%E6%B3%95/
