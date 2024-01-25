@@ -1,3 +1,4 @@
+https://palette-k.github.io/2024/01/25/SpringSecurity%E7%9A%84%E4%BD%BF%E7%94%A8/
 https://palette-k.github.io/2023/12/20/MyBatis%E6%BA%90%E7%A0%81/
 https://palette-k.github.io/2024/01/23/%E7%AD%BE%E5%90%8D%E5%92%8C%E9%AA%8C%E7%AD%BE/
 https://palette-k.github.io/2024/01/18/Maven%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E6%88%98/
@@ -52,4 +53,5 @@ https://palette-k.github.io/tags/%E9%AA%8C%E7%AD%BE/
 https://palette-k.github.io/tags/SpringBoot/
 https://palette-k.github.io/tags/starter/
 https://palette-k.github.io/tags/%E9%93%BE%E8%A1%A8/
+https://palette-k.github.io/tags/Spring-Security/
 https://palette-k.github.io/categories/%E7%AE%97%E6%B3%95/
