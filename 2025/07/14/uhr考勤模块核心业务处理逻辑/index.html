@@ -1,0 +1,356 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>uhr考勤 | Palette</title><meta name="author" content="Palette,1148432487@qq.com"><meta name="copyright" content="Palette"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="1自动生成年假1.1基本业务场景假期类型为定额类且规则是自动生成的需要定时任务自动生成假期，根据基准值和生成条件来确定年假生成的额度。   基准值：福利工龄日期、社会工龄日期!!#ff0000 生成条件!!：福利工龄日期满N个月、社会工龄日期满N个月 是否预支年假：是、否。即是生成已工作年份年假和未来为工作时间的年假（预支，员工刚入职生成今年一年的年假）基准值单位：月、自然年例如：基准值以月为单位">
+<meta property="og:type" content="article">
+<meta property="og:title" content="uhr考勤">
+<meta property="og:url" content="https://palette-k.github.io/2025/07/14/uhr%E8%80%83%E5%8B%A4%E6%A8%A1%E5%9D%97%E6%A0%B8%E5%BF%83%E4%B8%9A%E5%8A%A1%E5%A4%84%E7%90%86%E9%80%BB%E8%BE%91/index.html">
+<meta property="og:site_name" content="Palette">
+<meta property="og:description" content="1自动生成年假1.1基本业务场景假期类型为定额类且规则是自动生成的需要定时任务自动生成假期，根据基准值和生成条件来确定年假生成的额度。   基准值：福利工龄日期、社会工龄日期!!#ff0000 生成条件!!：福利工龄日期满N个月、社会工龄日期满N个月 是否预支年假：是、否。即是生成已工作年份年假和未来为工作时间的年假（预支，员工刚入职生成今年一年的年假）基准值单位：月、自然年例如：基准值以月为单位">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png">
+<meta property="article:published_time" content="2025-07-14T09:01:45.000Z">
+<meta property="article:modified_time" content="2025-08-28T03:31:52.592Z">
+<meta property="article:author" content="Palette">
+<meta property="article:tag" content="业务">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://palette-k.github.io/2025/07/14/uhr%E8%80%83%E5%8B%A4%E6%A8%A1%E5%9D%97%E6%A0%B8%E5%BF%83%E4%B8%9A%E5%8A%A1%E5%A4%84%E7%90%86%E9%80%BB%E8%BE%91/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Palette","link":"链接: ","source":"来源: Palette","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'uhr考勤',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-08-28 11:31:52'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Palette" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://ashleyblog.oss-cn-shenzhen.aliyuncs.com/avatar/lazysheep.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">54</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">49</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Palette"><span class="site-name">Palette</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">uhr考勤</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-07-14T09:01:45.000Z" title="发表于 2025-07-14 17:01:45">2025-07-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-08-28T03:31:52.592Z" title="更新于 2025-08-28 11:31:52">2025-08-28</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="uhr考勤"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="1自动生成年假"><a href="#1自动生成年假" class="headerlink" title="1自动生成年假"></a>1自动生成年假</h1><h2 id="1-1基本业务场景"><a href="#1-1基本业务场景" class="headerlink" title="1.1基本业务场景"></a>1.1基本业务场景</h2><p>假期类型为定额类且规则是自动生成的需要定时任务自动生成假期，根据基准值和生成条件来确定年假生成的额度。<br><img src="https://i0.hdslb.com/bfs/openplatform/f0088aaee1cdc5c9bb9796c0aac8fd0f055648ec.png" alt="image-20250714170445623"></p>
+<p><img src="https://i0.hdslb.com/bfs/openplatform/f2a257b70f9cf40c4a976c8c7627830453b19c82.png" alt="image-20250714170504252"></p>
+<p><img src="https://i0.hdslb.com/bfs/openplatform/555ded81855f9ee25dd4f9e7a2deeea258148e3c.png" alt="image-20250714170518878"></p>
+<p><strong>基准值</strong>：福利工龄日期、社会工龄日期<br>!!#ff0000 <strong>生成条件</strong>!!：福利工龄日期满N个月、社会工龄日期满N个月</p>
+<p><strong>是否预支年假</strong>：是、否。即是生成已工作年份年假和未来为工作时间的年假（预支，员工刚入职生成今年一年的年假）<br><strong>基准值单位：</strong>月、自然年<br><strong>例如：基准值以月为单位：</strong><br>基准值单位选择为“月”，非预支类型年假，若起始日期为2022年10月1日，则2023年10月1日基准值满12个月<br>示例：若年假计算规则：以“福利工龄”为基准值+“福利工龄”为基础条件+“自然年”为计算周期+取整方式为“向下取整”+额度单位为“天”+基准值单位为“月”： 小王于2015年7月12日首次参加工作，于2022年2月10日加入公司，公司规定：福利工龄满12个月（2023年2月10日）后给予年假，年假阶梯是福利工龄12个月<del>60个月给予5天，60个月</del>120个月给予7天。 小王于2022年5月10日，入职满12个月，此时生成年假。 计算规则为：（20221231-20220211）&#x2F;365<em>7&#x3D;6.19，向下取整为6天。<br><strong>基准值以自然年为单位：</strong><br>基准值单位选择为“自然年”，非预支类型年假，若起始日期为2022年10月1日，2023年1月1日开始则为第二个自然年。<br>示例：若年假计算规则：以“福利工龄”为基准值+“福利工龄”为基础条件+“自然年”为计算周期+取整方式为“向下取整”+额度单位为“天”+基准值单位为“自然年”： 小王于2018年7月12日首次参加工作，于2022年2月10日加入公司，公司规定：福利工龄满12个月（2023年2月10日）后给予年假，年假阶梯是社会工龄第1-5自然年给予5天， 小王于2023年2月10日，入职满12个月，此时生成年假。 计算规则为：（20221231-20220210）&#x2F;365</em>5&#x3D;4.42，向下取整为4天。</p>
+<h2 id="1-2业务实现逻辑梳理"><a href="#1-2业务实现逻辑梳理" class="headerlink" title="1.2业务实现逻辑梳理"></a>1.2业务实现逻辑梳理</h2><h3 id="整体逻辑流程图"><a href="#整体逻辑流程图" class="headerlink" title="整体逻辑流程图"></a>整体逻辑流程图</h3><p><img src="https://i0.hdslb.com/bfs/openplatform/9a074dde5b69432d6346787bf1b3cef3d6452e90.png" alt="image-20250714170735668"></p>
+<h3 id="以自然年为计算周期逻辑"><a href="#以自然年为计算周期逻辑" class="headerlink" title="以自然年为计算周期逻辑"></a>以自然年为计算周期逻辑</h3><p>名词解释：</p>
+<ul>
+<li><p>基准：基准值日期（社会工龄日期 or 福利工龄日期）</p>
+</li>
+<li><p>M：以基准值日期为准，生成条件满M个月</p>
+</li>
+<li><p>T：当前时间</p>
+</li>
+<li><p>司内（红点）：入职日期</p>
+</li>
+<li><p>司内年底（黑点）：入职当年的自然年底</p>
+</li>
+<li><p>司内2年底（黑点）：入职第二年的自然年底</p>
+</li>
+</ul>
+<p><strong>1.不预支年假，即满足年假生成条件，生成上年应休年假</strong><br><img src="https://i0.hdslb.com/bfs/openplatform/fd077ccfa48ea3c644fb11471b12ed1577c0ef98.png" alt="image-20250714170540813"><br><strong>2.预支年假</strong><br><img src="https://i0.hdslb.com/bfs/openplatform/6915b5e655025e6781644f25d991079854a21f93.png" alt="image-20250714170551746"><br><strong>3.不预支年假，即满足年假生成条件</strong><br><img src="https://i0.hdslb.com/bfs/openplatform/aa281597ee5d251c57bf70a49c85e6156068e903.png" alt="image-20250714170603847"><br><strong>4.预支年假</strong><br><img src="https://i0.hdslb.com/bfs/openplatform/b6a8d35bc7053bb3aca9a8526556dc76162a5791.png" alt="image-20250714170616417"></p>
+<p><em>代码逻辑：通过比较当前时间在哪个时间段、是否预支年假，传入不同的额度开始计算日期参数，再根据是否存在跨额度的情况计算出最终的应休年假。</em></p>
+<h2 id="1-3特殊场景-年假跨额度生成处理方式"><a href="#1-3特殊场景-年假跨额度生成处理方式" class="headerlink" title="1.3特殊场景-年假跨额度生成处理方式"></a>1.3特殊场景-年假跨额度生成处理方式</h2><p>1 员工当前年年假生成数刚好在两个阶段中是，需要对两个阶段进行合并计算出最终的年假<br>年假跨阶段7天&#x2F;10天； 计算公式：(153&#x2F;365)*7+(173&#x2F;365)*10<br><img src="https://i0.hdslb.com/bfs/openplatform/d44ec787f485b1cfd751d3442de69dbb3119be00.png" alt="image-20250714170640952"></p>
+<h2 id="1-4测试用例"><a href="#1-4测试用例" class="headerlink" title="1.4测试用例"></a>1.4测试用例</h2><p>根据以下测试用例可以和上面的流程图相结合，便于理解年假生成逻辑。</p>
+<p><strong>不预支年假：</strong></p>
+<p><img src="https://i0.hdslb.com/bfs/openplatform/d03b5acc62ec9451080fc00e675a68dc62938a9a.png" alt="image-20250714171231119"></p>
+<p><strong>预支年假：</strong></p>
+<p><img src="https://i0.hdslb.com/bfs/openplatform/db530e93d367b991b894228030bc5d5cacbb3315.png"></p>
+<p><strong>高管类个性化规则：</strong></p>
+<p><img src="https://i0.hdslb.com/bfs/openplatform/17ad2f8c00bf767a0a1bfed325b1d8b0b41f7bec.png" alt="image-20250714171407722"></p>
+<h1 id="2初始化有效打卡记录"><a href="#2初始化有效打卡记录" class="headerlink" title="2初始化有效打卡记录"></a>2初始化有效打卡记录</h1><p>一般来讲，考勤计算需要先拿到每个员工每天每个班次的有效打卡记录，以这个记录为基准来计算考勤。</p>
+<p><img src="https://i0.hdslb.com/bfs/openplatform/d290f8e750aa53a54a87946ebd8668e5d9e08c13.png" alt="image-20250715172749571"></p>
+<h1 id="3考勤计算全流程"><a href="#3考勤计算全流程" class="headerlink" title="3考勤计算全流程"></a>3考勤计算全流程</h1><p>考勤计算分为数据准备、数据验证、组装数据、数据拆分计算这四个步骤，其中涉及的表及业务逻辑如下图。</p>
+<p>考勤计算的定时任务也和初始化有效打卡记录的整体逻辑一致，都是根据员工的pdc时间筛选出需要计算考勤的员工和考勤日期，按照日期给每个员工计算考勤。</p>
+<p><img src="https://i0.hdslb.com/bfs/openplatform/fd1b6cb9f2ff196d1e4d0f1966dabbeba83acd69.png" alt="image-20250715172047166"></p>
+<p>考勤计算涉及的相关表：</p>
+<p><img src="https://i0.hdslb.com/bfs/openplatform/0726a8b1949c0b2b501f83e7e26a00767a45de1d.png" alt="image-20250717151034055"></p>
+<h2 id="3-1数据准备"><a href="#3-1数据准备" class="headerlink" title="3.1数据准备"></a>3.1数据准备</h2><p><img src="https://i0.hdslb.com/bfs/openplatform/d3fe75c1771bb5643c18803617374d2eefe31a43.png" alt="image-20250715171507019"></p>
+<h2 id="3-2数据验证"><a href="#3-2数据验证" class="headerlink" title="3.2数据验证"></a>3.2数据验证</h2><p><img src="https://i0.hdslb.com/bfs/openplatform/41716aab8440e3ac1aa8e55e6e293400bdcc676b.png" alt="image-20250715171624480"></p>
+<h2 id="3-3组装数据"><a href="#3-3组装数据" class="headerlink" title="3.3组装数据"></a>3.3组装数据</h2><p>此处获取班次信息（标记0点）的作用是，跨天班次可能会存在休息时间跨天的情况，也可能跨天时是排班的情况，需要将0点前后的考勤状态拆分。</p>
+<p>例如：跨天班次B(19:00-5:00)，休息时间为23:00–1:00,3:00–4:00</p>
+<p>拆分0点后，班次结果为：   [2025-07-16  19:00,2025-07-16 23:00]【排班】</p>
+<p>​												[2025-07-16  23:00,2025-07-16 0:00] 【休息】</p>
+<p>​												[2025-07-17  0:00,2025-07-17 1:00] 【休息】</p>
+<p>​												[2025-07-17  1:00,2025-07-17 3:00] 【排班】</p>
+<p>​												[2025-07-17  3:00,2025-07-17 4:00] 【休息】</p>
+<p>​												[2025-07-17  4:00,2025-07-17 5:00] 【排班】</p>
+<p>后续的考勤拆分是以这个拆分了0点后的班次作为循环条件，与打卡、请假、销假、出差等数据进行比较。<img src="https://i0.hdslb.com/bfs/openplatform/9287b759e47205192f431f45ef7e1284d893a0fd.png" alt="image-20250715171644104"></p>
+<h2 id="3-4数据拆分计算"><a href="#3-4数据拆分计算" class="headerlink" title="3.4数据拆分计算"></a>3.4数据拆分计算</h2><h3 id="考勤核算流程图"><a href="#考勤核算流程图" class="headerlink" title="考勤核算流程图"></a>考勤核算流程图</h3><p><img src="https://i0.hdslb.com/bfs/openplatform/1250b18924e17d13981b40a42ac836ea5c7ec625.png" alt="image-20250715171705033"></p>
+<h3 id="考勤核算规则"><a href="#考勤核算规则" class="headerlink" title="考勤核算规则"></a>考勤核算规则</h3><p><img src="https://i0.hdslb.com/bfs/openplatform/712f8d78d39fd934dee9bb7225f3ab269d7f88f1.png" alt="image-20250715172024559"></p>
+<p><img src="https://i0.hdslb.com/bfs/openplatform/dcf709c964d1d3bc88900189570ffdd7c6100be6.png" alt="image-20250715172037235"></p>
+<h3 id="考勤状态"><a href="#考勤状态" class="headerlink" title="考勤状态"></a>考勤状态</h3><p><code>休息</code>、<code>请假</code>、<code>出差</code>、<code>正常出勤</code>、<code>早到</code>、<code>迟到</code>、<code>早退</code>、<code>延迟下班</code>、<code>旷工</code>、<code>排班</code>、<code>弹性排班</code></p>
+<p><strong>三、数据处理（考勤计算前）</strong><br>1、数据准备：所有数据需分段存储至GtdAttendanceResult对象中，并标识出该段目前的考勤状态<br>例：班次为9:00-18:00，休息时间为12:00-14:00<br>分段存储后：9:00-12:00（排班），12:00-14:00（休息），14:00-18:00（排班）</p>
+<h3 id="考勤计算"><a href="#考勤计算" class="headerlink" title="考勤计算"></a>考勤计算</h3><p><strong>1、初次比较</strong><br>1.1、以班次作为基础数据，打卡、请假、销假、出差等数据作为比较数据</p>
+<p><img src="https://i0.hdslb.com/bfs/openplatform/c20c5e47e668d47e7a3bbfe9a2f2caa8c5cc3286.png" alt="image-20250715172448644"></p>
+<p>1.2、根据考勤核算规则优先级，将比较数据逐一与基础数据进行比对，不重合时间段保留当前考勤状态，重合时间段按照优先级比对出两段考勤状态<br>1.3、为了提升比对效率，若当前比较数据比对完毕，则终止循环，进入下一次比较数据的循环<br><img src="https://i0.hdslb.com/bfs/openplatform/fffc12387eeedafe635dc4aba6a7841bfdf57ff9.png" alt="image-20250715172416478"></p>
+<p><strong>2、二次比较</strong><br>2.1、二次比较确定考勤异常最终状态，例：初次比较得出迟到、早退，需要与系统配置的时长进行比对，确定是否为旷工</p>
+<p><strong>3、弹性班次注意事项</strong><br>3.1、需先计算员工应下班时间（根据上班打卡时间和上班总时长计算）<br>3.2、班次时间需这样拆分 -&gt; 最早到岗时间,最晚到岗时间 ; 最晚到岗时间,实际下班时间 ; 实际下班时间,最晚下班时间</p>
+<p><strong>4、多段班注意事项</strong><br>4.1、多段班需要逐段班次进行比较</p>
+<p><strong>五、考勤结果、明细存储</strong><br>1、保存考勤明细存在转换天数精度丢失问题<br>现采用减法计算：1 - 请假天数 - 实际出勤天数(包含出差天数) &#x3D; 旷工天数<br>特殊处理：若考勤结果无旷工时间段，且减法后旷工天数 &gt; 0 ,则将旷工天数补入实际出勤天数</p>
+<h1 id="4考勤处理流程"><a href="#4考勤处理流程" class="headerlink" title="4考勤处理流程"></a>4考勤处理流程</h1><p>考勤一般都是与OA流程挂钩的，员工的请假、加班、出差、销假等操作在OA系统发起，对接到UHR系统，对接后考勤处理流程如下。</p>
+<p><img src="https://i0.hdslb.com/bfs/openplatform/654e3789730d7e6c9b95b2a3dac3ac6515ff602d.png" alt="image-20250715173137044"></p>
+<h2 id="4-1拆分请假-出差数据"><a href="#4-1拆分请假-出差数据" class="headerlink" title="4.1拆分请假&#x2F;出差数据"></a>4.1拆分请假&#x2F;出差数据</h2><p>员工提交整段请假记录时，后台需要按照员工班次进行拆分，存储到数据库时请假结果按天存储，销假是也要删除对应拆分结果。</p>
+<p>而且对于员工排班发生变更前的请假&#x2F;出差记录，计算考勤前需要重新拆分。</p>
+<p>具体拆分逻辑如下：</p>
+<p><img src="https://i0.hdslb.com/bfs/openplatform/7c1af1dfc15a95bc298c721c4151fc215107f6ad.png" alt="image-20250715173311178"></p>
+<h1 id="5考勤日历"><a href="#5考勤日历" class="headerlink" title="5考勤日历"></a>5考勤日历</h1><h2 id="5-1相关表设计"><a href="#5-1相关表设计" class="headerlink" title="5.1相关表设计"></a>5.1相关表设计</h2><p>其中 gtd_emp_calendar 因数据量过大，不再使用。</p>
+<p>gtd_work_calendar_details工作日历明细表，精确到天，每天绑定一个班次。</p>
+<p>sys_organization为组织表，emp_org_allocation为员工的组织分配表（员工有异动时添加一条数据）。</p>
+<p><img src="https://i0.hdslb.com/bfs/openplatform/21e03b05f82fb068d2c9e64eb9c4bd72080e5905.png" alt="image-20250716142327119"></p>
+<ul>
+<li>gtd_holiday_manage：节假日管理实体，包含节假日名称、代码、开始日期、结束日期、法定节假日、调休日期等信息。</li>
+<li>gtd_work_calendar_details：工作日历明细表，记录每个工作日历的具体日期安排，包括班次、日期类型等。</li>
+<li>gtd_holiday_calendar_history：工作日历和节假日关联历史表，用于记录工作日历应用节假日前的原始数据，便于后续恢复或修改。</li>
+</ul>
+<h2 id="5-2相关业务逻辑"><a href="#5-2相关业务逻辑" class="headerlink" title="5.2相关业务逻辑"></a>5.2相关业务逻辑</h2><h3 id="工作日历按周期顺延"><a href="#工作日历按周期顺延" class="headerlink" title="工作日历按周期顺延"></a>工作日历按周期顺延</h3><p><img src="https://i0.hdslb.com/bfs/openplatform/f968b9835cb84efae8ed4b508cad7112780e82bc.png" alt="image-20250716193716828"></p>
+<h3 id="节假日应用工作日历"><a href="#节假日应用工作日历" class="headerlink" title="节假日应用工作日历"></a>节假日应用工作日历</h3><p>节假日管理信息配置中，支持编辑法定节假日日期、关联调休日期、法定节假日（非3倍计薪）</p>
+<p><img src="https://i0.hdslb.com/bfs/openplatform/230b79f95edb3a2fee6717963695671162af55c8.png" alt="image-20250717102302183"></p>
+<p>一个节假日支持应用到多个工作日历上</p>
+<p><img src="https://i0.hdslb.com/bfs/openplatform/a863988dcccef29b887e5a622622d3f6ed9ddd30.png" alt="image-20250717103717525"></p>
+<p>节假日应用到多个工作日历的业务流程图如下：</p>
+<p><img src="https://i0.hdslb.com/bfs/openplatform/2693723abd13324a138173e8113fe4d5429a698d.png" alt="image-20250717111533223"></p>
+<p>整个节假日历史关联表的业务逻辑可以总结为：</p>
+<ol>
+<li><p>历史记录管理 ：</p>
+<ul>
+<li>保存原始工作日历数据（ holidayId 为 null ）</li>
+<li>保存节假日应用后的工作日历数据（ holidayId 为节假日ID）</li>
+<li>当修改节假日设置时，先恢复原始数据，再应用新设置</li>
+</ul>
+</li>
+<li><p>节假日应用 ：</p>
+<ul>
+<li>将节假日期间的工作日设置为休息日（ classId 为 null ）</li>
+<li>根据节假日类型设置不同的 holidayType （法定节假日或普通节假日）</li>
+</ul>
+</li>
+<li><p>调休处理 ：</p>
+<ul>
+<li>将调休日设置为工作日（ holidayType 为普通日期）</li>
+<li>为调休日分配合适的班次（通过查找最近的班次）</li>
+</ul>
+</li>
+<li><p>数据一致性 ：</p>
+<ul>
+<li>通过事务保证工作日历明细和历史记录的一致性</li>
+<li>通过批量操作提高性能</li>
+</ul>
+</li>
+</ol>
+<h3 id="获取员工班次步骤"><a href="#获取员工班次步骤" class="headerlink" title="获取员工班次步骤"></a>获取员工班次步骤</h3><p><strong>员工班次有两种来源：</strong><br>①.直接导入员工班次到员工班次明细表；<br>②.通过部门绑定工作日历或直接给员工绑定工作日历；<br>两者都存在时①优先级高于②</p>
+<p><img src="https://i0.hdslb.com/bfs/openplatform/739fc29e74f303da58a471285da004af7e9ca6dd.png" alt="image-20250716143401092"></p>
+<h3 id="员工工作日历变更"><a href="#员工工作日历变更" class="headerlink" title="员工工作日历变更"></a>员工工作日历变更</h3><h4 id="组织绑定工作日历"><a href="#组织绑定工作日历" class="headerlink" title="组织绑定工作日历"></a>组织绑定工作日历</h4><p><img src="https://i0.hdslb.com/bfs/openplatform/3c6a0d7a66d3aac073c529851903a18791b9f1e8.png" alt="image-20250716162159584"></p>
+<h4 id="入职-异动刷新员工考勤日历逻辑"><a href="#入职-异动刷新员工考勤日历逻辑" class="headerlink" title="入职&#x2F;异动刷新员工考勤日历逻辑"></a>入职&#x2F;异动刷新员工考勤日历逻辑</h4><p><strong>组织与日历绑定关系</strong></p>
+<ul>
+<li>组织1 （2024-01-01 日历A），（2024-01-25 日历B）<br>组织1组 （2024-01-30 日历C），（2024-05-02 日历D）</li>
+<li>组织2 （2024-01-01 日历E）<br>组织2组</li>
+<li>组织3 （2024-01-01 日历F）<br>组织3组</li>
+</ul>
+<p><strong>员工异动流程</strong></p>
+<p>在2024-01-01号入职组织2组<br>在2024-01-20号从组织2组异动至组织1组<br>在2024-05-01号从组织1组异动至组织3组</p>
+<p>组织2组：[2024-01-01,2024-01-20]<br>组织1组：[2024-01-20,2024-05-01] 异动时间段<br>组织3组：[2024-05-01,9999-12-31]<br>异动时间段需生成的考勤日历：20号，25号，30号共三条</p>
+<p><strong>获取组织1组及上级所有考勤日历</strong></p>
+<p>倒序排序（2024-05-02，2024-01-30，2024-01-25，2024-01-01）</p>
+<p>如此以下遍历员工所在的各个组织比较…</p>
+<p><img src="https://i0.hdslb.com/bfs/openplatform/477a1f0b5e395c27f8a9bdbf5ecfa602308faccb.png" alt="image-20250716151015869"></p>
+<h1 id="6生成员工补卡余额"><a href="#6生成员工补卡余额" class="headerlink" title="6生成员工补卡余额"></a>6生成员工补卡余额</h1><p>每个月会给员工生成补卡余额，定时任务会每天更新该员工的补卡余额。</p>
+<p><img src="https://i0.hdslb.com/bfs/openplatform/b1c9ddc3793b9a9a27a9e0060dc7f342f98f1fb0.png" alt="image-20250716164814345"></p>
+<h1 id="7加班审核"><a href="#7加班审核" class="headerlink" title="7加班审核"></a>7加班审核</h1><p><img src="https://i0.hdslb.com/bfs/openplatform/8c9c198048126f68657611239069028322fdb0d1.png" alt="image-20250716175428067"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://palette-k.github.io">Palette</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://palette-k.github.io/2025/07/14/uhr%E8%80%83%E5%8B%A4%E6%A8%A1%E5%9D%97%E6%A0%B8%E5%BF%83%E4%B8%9A%E5%8A%A1%E5%A4%84%E7%90%86%E9%80%BB%E8%BE%91/">https://palette-k.github.io/2025/07/14/uhr%E8%80%83%E5%8B%A4%E6%A8%A1%E5%9D%97%E6%A0%B8%E5%BF%83%E4%B8%9A%E5%8A%A1%E5%A4%84%E7%90%86%E9%80%BB%E8%BE%91/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://palette-k.github.io" target="_blank">Palette</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%B8%9A%E5%8A%A1/">业务</a></div><div class="post_share"><div class="social-share" data-image="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2025/07/09/kubernetes/" title="kubernetes"><img class="cover" src="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg3.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">kubernetes</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="comment-switch"><span class="first-comment">Valine</span><span class="switch-btn"></span><span class="second-comment">Disqus</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://ashleyblog.oss-cn-shenzhen.aliyuncs.com/avatar/lazysheep.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Palette</div><div class="author-info__description">这是一个终身学习的时代</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">54</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">49</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Palette-k"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Palette-k" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:1148432487@gq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E5%B9%B4%E5%81%87"><span class="toc-number">1.</span> <span class="toc-text">1自动生成年假</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1%E5%9F%BA%E6%9C%AC%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF"><span class="toc-number">1.1.</span> <span class="toc-text">1.1基本业务场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2%E4%B8%9A%E5%8A%A1%E5%AE%9E%E7%8E%B0%E9%80%BB%E8%BE%91%E6%A2%B3%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text">1.2业务实现逻辑梳理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E9%80%BB%E8%BE%91%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">1.2.1.</span> <span class="toc-text">整体逻辑流程图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A5%E8%87%AA%E7%84%B6%E5%B9%B4%E4%B8%BA%E8%AE%A1%E7%AE%97%E5%91%A8%E6%9C%9F%E9%80%BB%E8%BE%91"><span class="toc-number">1.2.2.</span> <span class="toc-text">以自然年为计算周期逻辑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3%E7%89%B9%E6%AE%8A%E5%9C%BA%E6%99%AF-%E5%B9%B4%E5%81%87%E8%B7%A8%E9%A2%9D%E5%BA%A6%E7%94%9F%E6%88%90%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-number">1.3.</span> <span class="toc-text">1.3特殊场景-年假跨额度生成处理方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B"><span class="toc-number">1.4.</span> <span class="toc-text">1.4测试用例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2%E5%88%9D%E5%A7%8B%E5%8C%96%E6%9C%89%E6%95%88%E6%89%93%E5%8D%A1%E8%AE%B0%E5%BD%95"><span class="toc-number">2.</span> <span class="toc-text">2初始化有效打卡记录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3%E8%80%83%E5%8B%A4%E8%AE%A1%E7%AE%97%E5%85%A8%E6%B5%81%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">3考勤计算全流程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1%E6%95%B0%E6%8D%AE%E5%87%86%E5%A4%87"><span class="toc-number">3.1.</span> <span class="toc-text">3.1数据准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2%E6%95%B0%E6%8D%AE%E9%AA%8C%E8%AF%81"><span class="toc-number">3.2.</span> <span class="toc-text">3.2数据验证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3%E7%BB%84%E8%A3%85%E6%95%B0%E6%8D%AE"><span class="toc-number">3.3.</span> <span class="toc-text">3.3组装数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4%E6%95%B0%E6%8D%AE%E6%8B%86%E5%88%86%E8%AE%A1%E7%AE%97"><span class="toc-number">3.4.</span> <span class="toc-text">3.4数据拆分计算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%80%83%E5%8B%A4%E6%A0%B8%E7%AE%97%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">3.4.1.</span> <span class="toc-text">考勤核算流程图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%80%83%E5%8B%A4%E6%A0%B8%E7%AE%97%E8%A7%84%E5%88%99"><span class="toc-number">3.4.2.</span> <span class="toc-text">考勤核算规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%80%83%E5%8B%A4%E7%8A%B6%E6%80%81"><span class="toc-number">3.4.3.</span> <span class="toc-text">考勤状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%80%83%E5%8B%A4%E8%AE%A1%E7%AE%97"><span class="toc-number">3.4.4.</span> <span class="toc-text">考勤计算</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4%E8%80%83%E5%8B%A4%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B"><span class="toc-number">4.</span> <span class="toc-text">4考勤处理流程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1%E6%8B%86%E5%88%86%E8%AF%B7%E5%81%87-%E5%87%BA%E5%B7%AE%E6%95%B0%E6%8D%AE"><span class="toc-number">4.1.</span> <span class="toc-text">4.1拆分请假&#x2F;出差数据</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5%E8%80%83%E5%8B%A4%E6%97%A5%E5%8E%86"><span class="toc-number">5.</span> <span class="toc-text">5考勤日历</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1%E7%9B%B8%E5%85%B3%E8%A1%A8%E8%AE%BE%E8%AE%A1"><span class="toc-number">5.1.</span> <span class="toc-text">5.1相关表设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2%E7%9B%B8%E5%85%B3%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91"><span class="toc-number">5.2.</span> <span class="toc-text">5.2相关业务逻辑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%8E%86%E6%8C%89%E5%91%A8%E6%9C%9F%E9%A1%BA%E5%BB%B6"><span class="toc-number">5.2.1.</span> <span class="toc-text">工作日历按周期顺延</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8A%82%E5%81%87%E6%97%A5%E5%BA%94%E7%94%A8%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%8E%86"><span class="toc-number">5.2.2.</span> <span class="toc-text">节假日应用工作日历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%91%98%E5%B7%A5%E7%8F%AD%E6%AC%A1%E6%AD%A5%E9%AA%A4"><span class="toc-number">5.2.3.</span> <span class="toc-text">获取员工班次步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%98%E5%B7%A5%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%8E%86%E5%8F%98%E6%9B%B4"><span class="toc-number">5.2.4.</span> <span class="toc-text">员工工作日历变更</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%84%E7%BB%87%E7%BB%91%E5%AE%9A%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%8E%86"><span class="toc-number">5.2.4.1.</span> <span class="toc-text">组织绑定工作日历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A5%E8%81%8C-%E5%BC%82%E5%8A%A8%E5%88%B7%E6%96%B0%E5%91%98%E5%B7%A5%E8%80%83%E5%8B%A4%E6%97%A5%E5%8E%86%E9%80%BB%E8%BE%91"><span class="toc-number">5.2.4.2.</span> <span class="toc-text">入职&#x2F;异动刷新员工考勤日历逻辑</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6%E7%94%9F%E6%88%90%E5%91%98%E5%B7%A5%E8%A1%A5%E5%8D%A1%E4%BD%99%E9%A2%9D"><span class="toc-number">6.</span> <span class="toc-text">6生成员工补卡余额</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7%E5%8A%A0%E7%8F%AD%E5%AE%A1%E6%A0%B8"><span class="toc-number">7.</span> <span class="toc-text">7加班审核</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/07/14/uhr%E8%80%83%E5%8B%A4%E6%A8%A1%E5%9D%97%E6%A0%B8%E5%BF%83%E4%B8%9A%E5%8A%A1%E5%A4%84%E7%90%86%E9%80%BB%E8%BE%91/" title="uhr考勤"><img src="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="uhr考勤"/></a><div class="content"><a class="title" href="/2025/07/14/uhr%E8%80%83%E5%8B%A4%E6%A8%A1%E5%9D%97%E6%A0%B8%E5%BF%83%E4%B8%9A%E5%8A%A1%E5%A4%84%E7%90%86%E9%80%BB%E8%BE%91/" title="uhr考勤">uhr考勤</a><time datetime="2025-07-14T09:01:45.000Z" title="发表于 2025-07-14 17:01:45">2025-07-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/09/kubernetes/" title="kubernetes"><img src="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="kubernetes"/></a><div class="content"><a class="title" href="/2025/07/09/kubernetes/" title="kubernetes">kubernetes</a><time datetime="2025-07-09T08:43:45.000Z" title="发表于 2025-07-09 16:43:45">2025-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/09/docker%E7%9A%84%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/" title="docker的使用技巧"><img src="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker的使用技巧"/></a><div class="content"><a class="title" href="/2025/07/09/docker%E7%9A%84%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/" title="docker的使用技巧">docker的使用技巧</a><time datetime="2025-07-09T07:03:45.000Z" title="发表于 2025-07-09 15:03:45">2025-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/07/Redis%E5%AE%9E%E6%88%98%EF%BC%9A%E5%9C%BA%E6%99%AF%E8%AE%BE%E8%AE%A1/" title="Redis实战：场景设计"><img src="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redis实战：场景设计"/></a><div class="content"><a class="title" href="/2025/07/07/Redis%E5%AE%9E%E6%88%98%EF%BC%9A%E5%9C%BA%E6%99%AF%E8%AE%BE%E8%AE%A1/" title="Redis实战：场景设计">Redis实战：场景设计</a><time datetime="2025-07-07T02:40:26.000Z" title="发表于 2025-07-07 10:40:26">2025-07-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/19/Spring%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8E%9F%E7%90%86/" title="Spring循环依赖及解决原理"><img src="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring循环依赖及解决原理"/></a><div class="content"><a class="title" href="/2025/06/19/Spring%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8E%9F%E7%90%86/" title="Spring循环依赖及解决原理">Spring循环依赖及解决原理</a><time datetime="2025-06-19T02:28:27.000Z" title="发表于 2025-06-19 10:28:27">2025-06-19</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png')"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2025 By Palette</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my blog!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script>function loadDisqus () {
+  const disqus_config = function () {
+    this.page.url = 'https://palette-k.github.io/2025/07/14/uhr%E8%80%83%E5%8B%A4%E6%A8%A1%E5%9D%97%E6%A0%B8%E5%BF%83%E4%B8%9A%E5%8A%A1%E5%A4%84%E7%90%86%E9%80%BB%E8%BE%91/'
+    this.page.identifier = '/2025/07/14/uhr%E8%80%83%E5%8B%A4%E6%A8%A1%E5%9D%97%E6%A0%B8%E5%BF%83%E4%B8%9A%E5%8A%A1%E5%A4%84%E7%90%86%E9%80%BB%E8%BE%91/'
+    this.page.title = 'uhr考勤'
+  }
+
+  const disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  btf.addModeChange('disqus', disqusReset)
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Valine' === 'Disqus' || !true) {
+  if (true) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

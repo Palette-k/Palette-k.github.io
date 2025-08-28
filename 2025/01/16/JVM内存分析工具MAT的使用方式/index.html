@@ -1,0 +1,392 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>JVM内存分析工具MAT的使用方式 | Palette</title><meta name="author" content="Palette,1148432487@qq.com"><meta name="copyright" content="Palette"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="MAT工具简介MAT（全名：Memory Analyzer Tool），是一款快速便捷且功能强大丰富的 JVM 堆内存离线分析工具。其通过展现 JVM 异常时所记录的运行时堆转储快照（Heap dump）状态（正常运行时也可以做堆转储分析），帮助定位内存泄漏问题或优化大内存消耗逻辑。 一般来说，线上出现GC问题会有异常告警，此时应该做的是下线一个节点，导出dump文件保留事故现场，然后对线上服务做">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM内存分析工具MAT的使用方式">
+<meta property="og:url" content="https://palette-k.github.io/2025/01/16/JVM%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7MAT%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Palette">
+<meta property="og:description" content="MAT工具简介MAT（全名：Memory Analyzer Tool），是一款快速便捷且功能强大丰富的 JVM 堆内存离线分析工具。其通过展现 JVM 异常时所记录的运行时堆转储快照（Heap dump）状态（正常运行时也可以做堆转储分析），帮助定位内存泄漏问题或优化大内存消耗逻辑。 一般来说，线上出现GC问题会有异常告警，此时应该做的是下线一个节点，导出dump文件保留事故现场，然后对线上服务做">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg2.png">
+<meta property="article:published_time" content="2025-01-16T05:53:54.000Z">
+<meta property="article:modified_time" content="2025-08-28T03:44:38.927Z">
+<meta property="article:author" content="Palette">
+<meta property="article:tag" content="JVM">
+<meta property="article:tag" content="MAT">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg2.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://palette-k.github.io/2025/01/16/JVM%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7MAT%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Palette","link":"链接: ","source":"来源: Palette","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'JVM内存分析工具MAT的使用方式',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-08-28 11:44:38'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Palette" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://ashleyblog.oss-cn-shenzhen.aliyuncs.com/avatar/lazysheep.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">54</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">49</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg2.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Palette"><span class="site-name">Palette</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">JVM内存分析工具MAT的使用方式</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-01-16T05:53:54.000Z" title="发表于 2025-01-16 13:53:54">2025-01-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-08-28T03:44:38.927Z" title="更新于 2025-08-28 11:44:38">2025-08-28</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>12分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="JVM内存分析工具MAT的使用方式"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="MAT工具简介"><a href="#MAT工具简介" class="headerlink" title="MAT工具简介"></a>MAT工具简介</h1><p>MAT（全名：Memory Analyzer Tool），是一款快速便捷且功能强大丰富的 JVM 堆内存离线分析工具。其通过展现 JVM 异常时所记录的运行时堆转储快照（Heap dump）状态（正常运行时也可以做堆转储分析），帮助定位内存泄漏问题或优化大内存消耗逻辑。</p>
+<p>一般来说，线上出现GC问题会有异常告警，此时应该做的是下线一个节点，导出dump文件保留事故现场，然后对线上服务做回滚&#x2F;灰度处理，或者调整堆内存大小，或者重启服务器&#x2F;手动触发FullGC快速回收内存，先保证服务正常运行，然后再用1天的时间对dump文件进行分析，排查出异常问题并进行修复。</p>
+<h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><h3 id="Heap-Dump"><a href="#Heap-Dump" class="headerlink" title="Heap Dump"></a>Heap Dump</h3><p>Heap Dump 是 Java 进程堆内存在一个时间点的快照，其主要结构包含：</p>
+<ul>
+<li>所有对象的实例信息：对象所属类名、基础类型和引用类型的属性等</li>
+<li>所有类信息：类加载器、类名、继承关系、静态属性</li>
+<li>GC Root：GC Root 代表通过可达性分析来判定 JVM 对象是否存活的起始集合。JVM 采用追踪式垃圾回收（Tracing GC）模式，<strong>从所有 GC Roots 出发通过引用关系可以关联的对象</strong>就是存活的（且不可回收），其余的不可达的对象（Unreachable object：如果无法从 GC Root 找到一条引用路径能到达某对象，则该对象为Unreachable object）可以回收。</li>
+<li>线程栈及局部变量：快照生成时刻的所有线程的线程栈帧，以及每个线程栈的局部变量</li>
+</ul>
+<h3 id="Shallow-Heap"><a href="#Shallow-Heap" class="headerlink" title="Shallow Heap"></a>Shallow Heap</h3><p>Shallow Heap 代表一个<strong>对象结构自身</strong>所占用的内存大小，不包括其属性引用对象所占的内存。</p>
+<h3 id="Retained-Heap"><a href="#Retained-Heap" class="headerlink" title="Retained Heap"></a>Retained Heap</h3><p>Retained Heap 是一个对象被 GC 回收后，可释放的内存大小。如果一个对象A同时被两个对象B和C引用，那么B回收后不能释放掉A，因为A也被C引用了。</p>
+<h3 id="Dominator-tree"><a href="#Dominator-tree" class="headerlink" title="Dominator tree"></a>Dominator tree</h3><p>如果所有指向对象 Y 的路径都经过对象 X，则 X 支配（dominate） Y</p>
+<h3 id="QQL"><a href="#QQL" class="headerlink" title="QQL"></a>QQL</h3><p>OQL 是类似于 SQL 的 MAT 专用统一查询语言，可以根据复杂的查询条件对 dump 文件中的类或者对象等数据进行查询筛选。</p>
+<h3 id="references"><a href="#references" class="headerlink" title="references"></a>references</h3><p>outgoing references、incoming references 可以直击对象间依赖关系，MAT 也提供了链式快速操作。</p>
+<ul>
+<li>outgoing references：对象引用的外部对象（注意不包含对象的基本类型属性。基本属性内容可在 inspector 查看）。</li>
+<li>incoming references：直接引用了当前对象的对象，每个对象的 incoming references 可能有 0 到多个。</li>
+</ul>
+<h1 id="MAT功能概述"><a href="#MAT功能概述" class="headerlink" title="MAT功能概述"></a>MAT功能概述</h1><p>熟练掌握 MAT 是 Java 高手的必备能力，但实践时大家往往需面对众多功能，可以根据这个脑图去寻找一些使用MAT的切入点，分析出异常点。</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8bb5e21bfb5a4a4d855e5e0ee80206d7~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<p>菜单-各功能的使用入口</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/822515f03c704e61ae8967048a36b4b3~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<h2 id="1-内存分布详解及实战"><a href="#1-内存分布详解及实战" class="headerlink" title="1 内存分布详解及实战"></a>1 内存分布详解及实战</h2><h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p><strong>功能：</strong>展现堆内存大小、对象数量、class 数量、class loader 数量、GC Root 数量、环境变量、线程概况等全局统计信息。</p>
+<p><strong>使用入口</strong>：MAT 主界面 → Heap Dump Overview。</p>
+<p><strong>举例</strong>：下面是对象数量、class loader 数量、GC Root 数量，可以看出 class loader 存在异常。</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cdfda3beda914ae288b96f261d0e58ca~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<p><strong>使用入口</strong>：MAT 主界面 → Java Basics -&gt;  Thread Overview and stack。</p>
+<p>下图是线程概况，可以查看每个线程名、线程的 Retained Heap、daemon 属性等。</p>
+<p><img src="https://i0.hdslb.com/bfs/article/60d0bc0af37234d6bfadce5af151e50e171301454.png" alt="image-20250116142503899"></p>
+<p><strong>使用场景</strong> 全局概览呈现全局统计信息，重点查看整体是否有异常数据，所以有效信息有限，下面几种场景有一定帮助：</p>
+<ul>
+<li>方法区溢出时（Java 8后不使用方法区，对应堆溢出），查看 class 数量异常多，可以考虑是否为动态代理类异常载入过多或类被反复重复加载。</li>
+<li>方法区溢出时，查看 class loader 数量过多，可以考虑是否为自定义 class loader 被异常循环使用。</li>
+<li>GC Root 过多，可以查看 GC Root 分布，理论上这种情况极少会遇到，笔者只在 JNI 使用一个存在 BUG 的库时遇到过。</li>
+<li>线程数过多，一般是频繁创建线程但无法执行结束，从概览可以了解异常表象，具体原因可以参考本文线程分析部分内容，此处不展开。</li>
+</ul>
+<h3 id="Dominator-tree-1"><a href="#Dominator-tree-1" class="headerlink" title="Dominator tree"></a>Dominator tree</h3><p><em>使用频率top 1，是高效分析 Dump 必看的功能</em></p>
+<p><strong>功能</strong></p>
+<ul>
+<li>展现对象的支配关系图，并给出对象支配内存的大小（支配内存等同于 Retained Heap，即其被 GC 回收可释放的内存大小）</li>
+<li>支持排序、支持按 package、class loader、super class、class 聚类统计</li>
+</ul>
+<p><strong>使用入口</strong>：全局支配树： MAT 主界面 → Dominator tree。</p>
+<p><strong>举例：</strong> 下图中查看 Dominator tree</p>
+<p><img src="https://i0.hdslb.com/bfs/article/f2517439a70d3c760d94697717f279f9171301454.png" alt="image-20250116142731886"></p>
+<p>有些情况下可能看不太出来支配起点对象的 Reatained Heap 占用很大内存，这时可以按 class、package、class loader做聚合，进而定位目标。</p>
+<p><img src="https://i0.hdslb.com/bfs/article/3263fc79d9be243a86d76e2aa51c08c0171301454.png" alt="image-20250116142918095"></p>
+<p>可以定位到String对象支配内存较多，然后结合代码进一步分析具体原因。</p>
+<p><img src="https://i0.hdslb.com/bfs/article/d4955f9a8d6ec4b684188d7f94027556171301454.png" alt="image-20250116143212144"></p>
+<p>在一些操作后定位到异常持有 Retained Heap 对象后（如从代码看对象应该被回收），可以获取对象的直接支配者，操作方式如下。</p>
+<p><img src="https://i0.hdslb.com/bfs/article/2439777d8f5871a529422f5e2818ffe3171301454.png" alt="image-20250116143524870"></p>
+<h3 id="Histogram-直方图"><a href="#Histogram-直方图" class="headerlink" title="Histogram 直方图"></a>Histogram 直方图</h3><p><em>使用概率 Top 2</em></p>
+<p><strong>功能</strong></p>
+<ul>
+<li>罗列每个类实例的数量、类实例累计内存占比，包括自身内存占用量（Shallow Heap）及支配对象的内存占用量（Retain Heap）。</li>
+<li>支持按对象数量、Retained Heap、Shallow Heap（默认排序）等指标排序；支持按正则过滤；支持按 package、class loader、super class、class 聚类统计，</li>
+</ul>
+<p><strong>使用入口</strong>：MAT 主界面 → Histogram；注意 Histogram 默认不展现 Retained Heap，可以使用计算器图标计算，如下图所示。</p>
+<p><img src="https://i0.hdslb.com/bfs/article/d9802f9a77d226c351fefcf3138bdbf0171301454.png" alt="image-20250116144018648"></p>
+<p>使用技巧</p>
+<ul>
+<li><p>Integer，String 和 Object[] 一般不直接导致内存问题。为更好的组织视图，可以通过 class loader 或 package 分组进一步聚焦，如下图。</p>
+<p><img src="https://i0.hdslb.com/bfs/article/61bcd368a76d272a9aa68cd335481a20171301454.png" alt="image-20250116144148218"></p>
+</li>
+<li><p>可以在 Histogram 的某个类继续使用 outgoing reference 查看对象分布，进而定位哪些对象是大头</p>
+<p><img src="https://i0.hdslb.com/bfs/article/dc1bde161a10e1bd7e03fa100c23c294171301454.png" alt="image-20250116144429449"></p>
+</li>
+</ul>
+<p>List objects找到大对象后，可以点击Path To GC Roots或incoming reference，查看大数组的引用路径。</p>
+<h3 id="Leak-Suspects"><a href="#Leak-Suspects" class="headerlink" title="Leak Suspects"></a>Leak Suspects</h3><p><strong>功能</strong>：具备自动检测内存泄漏功能，罗列可能存在内存泄漏的问题点。</p>
+<p><strong>使用入口</strong>：一般当存在明显的内存泄漏时，分析完Dump文件后就会展现，也可以如下图在 MAT 主页 → Leak Suspects。</p>
+<p><strong>使用场景</strong>：需要查看引用链条上占用内存较多的可疑对象。这个功能可解决一些基础问题，但复杂的问题往往帮助有限。</p>
+<p><img src="https://i0.hdslb.com/bfs/article/3d3661a118e2908ac681243b6c9d7386171301454.png" alt="image-20250116144654696"></p>
+<p>点击Keywords中的“Details”，获取实例到GC Root的最短路径、dominator路径的详细信息</p>
+<p><img src="https://i0.hdslb.com/bfs/article/3ff950b85e0d87dd149507e2da5f0c86171301454.png" alt="image-20250116144804972"></p>
+<p><img src="https://i0.hdslb.com/bfs/article/519d151488ec3dd0b22144a4b0772cc6171301454.png" alt="image-20250116144819555"></p>
+<h3 id="Top-Consumers"><a href="#Top-Consumers" class="headerlink" title="Top Consumers"></a>Top Consumers</h3><p><strong>功能</strong>：最大对象报告，可以展现哪些类、哪些 class loader、哪些 package 占用最高比例的内存，其功能 Histogram 及 Dominator tree 也都支持。</p>
+<p><strong>使用场景</strong>：应用程序发生内存泄漏时，查看哪些泄漏的对象通常在 Dump 快照中会占很大的比重。因此，对简单的问题具有较高的价值。</p>
+<h3 id="综合案例一"><a href="#综合案例一" class="headerlink" title="综合案例一"></a>综合案例一</h3><p>首先进入 Dominator tree，可以看出是 SameContentWrapperContainerProxy 对象与 main 线程两者持有99%内存不能释放导致 OOM。</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9fe24e47a05042b7b61a103e3c7dbf4b~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8d953a502fdf40c6ad95a5a992ec33fb~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<p>先来看方向一，在 Heap Dump Overview 中可以快速定位到 Number of class loaders 数达50万以上，这种基本属于异常情况，如下图所示。</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bc64b31b8e484ca88e02590b42f82c74~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<p>使用 Class Loader Explorer 分析工具，此时会展现类加载详情，可以看到有524061个 class loader。我们的案例中仅有ClassLoaderOOMOps 这样的自定义类加载器，所以很快可以定位到问题。</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bf60312fd4894df98ccd7573a1c0c5c6~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9309e3ecfa4e48dc8b98ab2f1e4e08d6~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<p>如果类加载器较多，不能确定是哪个引发问题，则可以将所有的 class loader对象按类做聚类，如下图所示。</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3dad1e14bad84ced8f906bf162dad4c5~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<p>Histogram 会根据 class 聚合，并展现对象数量级其 Shallow Heap 及 Retained Heap（如Retained Heap项目为空，可以点击下图中计算机的图标并计算 Retained Heap），可以看到 ClassLoaderOOMOps 有524044个对象，其 Retain Heap 占据了370M以上（上述代码是100M左右）。</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/09f7a1ecbe1d495cb144c16f676f9888~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<p>使用 incoming references，可以找到创建的代码位置。</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b8128a34a4fb42a7a28d4f7c69313e12~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<p>再来看方向二，同样在占据319M内存的 Obejct 数组采用 incoming references 查看引用路径，也很容易定位到具体代码位置。并且从下图中我们看出，Dominator tree 的起点并不一定是 GC根，且通过 Dominator tree 可能无法获取到最开始的创建路径，但 incoming references 是可以的。</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/64fac354fd204b3f93c43d48a25c0646~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<h2 id="2-对象间依赖详解及实战"><a href="#2-对象间依赖详解及实战" class="headerlink" title="2 对象间依赖详解及实战"></a>2 对象间依赖详解及实战</h2><h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><p><em><strong>注：笔者使用频率 Top2</strong></em></p>
+<p><strong>功能</strong>：在对象引用图中查看某个特定对象的所有引用关系（提供对象对其他对象或基本类型的引用关系，以及被外部其他对象的引用关系）。通过任一对象的直接引用及间接引用详情（主要是属性值及内存占用），提供完善的依赖链路详情。</p>
+<p><strong>使用入口</strong>：目标域右键 → List objects → with outgoing references&#x2F;with incoming references.</p>
+<p><strong>使用场景</strong></p>
+<ul>
+<li>outgoing reference：查看对象所引用的对象，并支持链式传递操作。如查看一个大对象持有哪些内容，当一个复杂对象的 Retained Heap 较大时，通过 outgoing reference 可以查看由哪个属性引发。下图中 A 支配 F，且 F 占据大量内存，但优化时 F 的直接支配对象 A 无法修改。可通过 outgoing reference 看关系链上 D、B、E、C，并结合业务逻辑优化中间环节，这依托 dominator tree 是做不到的。</li>
+<li>incoming reference：查看对象被哪些对象引用，并支持链式传递操作。如查看一个大对象都被哪些对象引用，下图中 K 占内存大，所以 J 的 Retained Heap 较大，目标是从 GC Roots 摘除 J 引用，但在 Dominator tree 上 J 是树根，无法获取其被引用路径，可通过 incoming reference 查看关系链上的 H、X、Y ，并结合业务逻辑将 J 从 GC Root 链摘除。 <img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bde68d299620415cb34f5d6cbbeeeae7~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></li>
+</ul>
+<h3 id="Thread-overview"><a href="#Thread-overview" class="headerlink" title="Thread overview"></a>Thread overview</h3><p><strong>功能</strong>：展现转储 dump 文件时线程执行栈、线程栈引用的对象等详细状态，也提供各线程的 Retained Heap 等关联内存信息。</p>
+<p><strong>使用入口</strong>：MAT 主页 → Thread overview</p>
+<p><strong>使用场景</strong></p>
+<ul>
+<li>查看不同线程持有的内存占比，定位高内存消耗线程（开发技巧：不要直接使用 Thread 或 Executor 默认线程名避免全部混合在一起，使用线程尽量自命名方便识别，如下图中 ThreadAndListHolder-thread 是自定义线程名，可以很容易定位到具体代码）</li>
+<li>查看线程的执行栈及变量，结合业务代码了解线程阻塞在什么地方，以及无法继续运行释放内存，如下图中 ThreadAndListHolder-thread 阻塞在 sleep 方法。 <img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cfcded48fb234e0682bdc6d872f03717~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></li>
+</ul>
+<h3 id="Path-To-GC-Roots"><a href="#Path-To-GC-Roots" class="headerlink" title="Path To GC Roots"></a>Path To GC Roots</h3><p><strong>功能</strong>：提供任一对象到 GC Root 的路径详情。</p>
+<p><strong>使用入口</strong>：目标域右键 → Path To GC Roots</p>
+<p><strong>使用场景</strong>：有时你确信已经处理了大的对象集合但依然无法回收，该功能能快速定位异常对象不能被 GC 回收的原因，直击异常对象到 GC Root 的引用路径。比 incoming reference 的优势是屏蔽掉很多不需关注的引用关系，比 Dominator tree 的优势是可以得到更全面的信息。</p>
+<p><em>小技巧：在排查内存泄漏时，建议选择 exclude all phantom&#x2F;weak&#x2F;soft etc.references 排除虚引用&#x2F;弱引用&#x2F;软引用等的引用链，因为被虚引用&#x2F;弱引用&#x2F;软引用的对象可以直接被 GC 给回收，聚焦在对象否还存在 Strong 引用链即可。</em></p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3919a0973e6f4ac0b4fe3460e24fec75~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<h3 id="class-loader-分析"><a href="#class-loader-分析" class="headerlink" title="class loader 分析"></a>class loader 分析</h3><p><strong>功能</strong></p>
+<ul>
+<li>查看堆中所有 class loader 的使用情况（入口：MAT 主页菜单蓝色桶图标 → Java Basics → Class Loader Explorer）。</li>
+<li>查看堆中被不同class loader 重复加载的类（入口：MAT 主页菜单蓝色桶图标 → Java Basics → Duplicated Classes）。</li>
+</ul>
+<p><strong>使用场景</strong></p>
+<ul>
+<li>当从 Heap dump overview 了解到系统中 class loader 过多，导致占用内存异常时进入更细致的分析定位根因时使用。</li>
+<li>解决 NoClassDefFoundError 问题或检测 jar 包是否被重复加载</li>
+</ul>
+<p>具体使用方法在 2.6 及 3.5 两节的案例中有介绍。</p>
+<h3 id="综合案例二"><a href="#综合案例二" class="headerlink" title="综合案例二"></a>综合案例二</h3><p><strong>使用工具项</strong>：class loader（重复类检测）、inspector、正则检索。</p>
+<p><strong>异常现象</strong> ：运行时报 NoClassDefFoundError，在 classpath 中有两个不同版本的同名类。</p>
+<p><strong>分析过程</strong></p>
+<ol>
+<li><p>进入 MAT 已加载的重复类检测功能，方式如下图。 <img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/60fbe324fe9d416c90c2e659b4f971c7~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+</li>
+<li><p>可以看到所有重复的类，以及相关的类加载器，如下图。 <img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2cdae3fc7b614c01a8047e3c024b4680~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+</li>
+<li><p>根据类名，在<code>&lt;Regex&gt;</code>框中输入类名可以过滤无效信息。</p>
+</li>
+<li><p>选中目标类，通过Inspector视图，可以看到被加载的类具体是在哪个jar包里。（本例中重复的类是被 URLClassloader 加载的，右键点击 “_context” 属性，最后点击 “Go Into”，在弹出的窗口中的属性 “_war” 值是被加载类的具体包位置）</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/db89543ca6b544cf8e36252aa08a60be~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"> <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c3be497af48b4c5b9ea96b2ae2a9c967~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+</li>
+</ol>
+<h2 id="3-对象状态详解及实战"><a href="#3-对象状态详解及实战" class="headerlink" title="3 对象状态详解及实战"></a>3 对象状态详解及实战</h2><h3 id="inspector"><a href="#inspector" class="headerlink" title="inspector"></a>inspector</h3><p><strong>功能</strong>：MAT 通过 inspector 面板展现对象的详情信息，如静态属性值及实例属性值、内存地址、类继承关系、package、class loader、GC Roots 等详情数据。</p>
+<p><strong>使用场景</strong></p>
+<ul>
+<li>当内存使用量与业务逻辑有较强关联的场景，通过 inspector 可以通过查看对象具体属性值。比如：社交场景中某个用户对象的好友列表异常，其 List 长度达到几亿，通过  inspector 面板获取到异常用户 ID，进而从业务视角继续排查属于哪个用户，本例可能有系统账号，与所有用户是好友。</li>
+<li>集合等类型的使用会较多，如查看 ArrayList 的 size 属性也就了解其大小。</li>
+</ul>
+<p><strong>举例</strong>：下图中左边的 Inspector 窗口展现了地址 0x125754cf8 的 ArrayList 实例详情，包括 modCount 等并不会在 outgoing references 展现的基本属性。 <img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b5067f8c3bc94397ad829ae9ee882b34~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<h3 id="集合状态"><a href="#集合状态" class="headerlink" title="集合状态"></a>集合状态</h3><p><strong>功能</strong>：帮助更直观的了解系统的内存使用情况，查找浪费的内存空间。</p>
+<p><strong>使用入口</strong>：MAT 主页 → Java Collections → 填充率&#x2F;Hash冲突等功能。</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/409f4fd84bef43dfabdd9f6337615917~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<p><strong>使用场景</strong></p>
+<ul>
+<li>通过对 ArrayList 或数组等集合类对象按填充率聚类，定位稀疏或空集合类对象造成的内存浪费。</li>
+<li>通过 HashMap 冲突率判定 hash 策略是否合理。</li>
+</ul>
+<p>具体使用方法在 4.3 节案例详细介绍。</p>
+<h3 id="综合案例三"><a href="#综合案例三" class="headerlink" title="综合案例三"></a>综合案例三</h3><p><strong>使用工具项</strong>：Dominator tree、Histogram、集合 ratio。</p>
+<p><strong>异常现象</strong> ：程序 OOM，且 Dominator tree 无大对象，通过 Histogram 了解到多个 ArrayList 占据大量内存，期望通过减少 ArrayList 优化程序。</p>
+<p><strong>分析过程</strong></p>
+<ol>
+<li>使用 Dominator tree 查看并无高占比起点。 <img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d2f44f9216f94b08bc3bdf7107d5a737~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></li>
+<li>使用 Histogram 定位到 ListHolder 及 ArrayList 占比过高，经过业务分析很多 List 填充率很低浪费内存。 <img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/de3c98f88cf14561ae1117e2f8e55cd2~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></li>
+<li>查看 ArrayList 的填充率，MAT 首页 → Java Collections → Collection Fill Ratio。 <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/44000e6e5c2946e18ed1703d68aec244~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></li>
+<li>查看类型填写 java.util.ArrayList。 <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ad7db951d8254ebaa9c85f07e799f887~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></li>
+<li>从结果可以看出绝大部分 ArrayList 初始申请长度过大。 <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fe6c558fd665443c874d41c920a64018~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://palette-k.github.io">Palette</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://palette-k.github.io/2025/01/16/JVM%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7MAT%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/">https://palette-k.github.io/2025/01/16/JVM%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7MAT%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://palette-k.github.io" target="_blank">Palette</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JVM/">JVM</a><a class="post-meta__tags" href="/tags/MAT/">MAT</a></div><div class="post_share"><div class="social-share" data-image="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg2.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/01/23/MAT%E6%8E%92%E6%9F%A5%E6%A1%88%E4%BE%8B%E2%80%94%E2%80%94BeanCopy%E7%9A%84%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/" title="MAT排查案例——BeanCopy的正确使用方式"><img class="cover" src="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">MAT排查案例——BeanCopy的正确使用方式</div></div></a></div><div class="next-post pull-right"><a href="/2025/01/15/%E4%BD%BF%E7%94%A8arthas%E5%8F%8A%E6%8F%92%E4%BB%B6%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%E5%AE%9E%E8%B7%B5/" title="使用arthas及插件故障排查实践"><img class="cover" src="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">使用arthas及插件故障排查实践</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2025/01/23/MAT%E6%8E%92%E6%9F%A5%E6%A1%88%E4%BE%8B%E2%80%94%E2%80%94BeanCopy%E7%9A%84%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/" title="MAT排查案例——BeanCopy的正确使用方式"><img class="cover" src="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-23</div><div class="title">MAT排查案例——BeanCopy的正确使用方式</div></div></a></div><div><a href="/2025/01/23/JVM%E8%B0%83%E4%BC%98%E5%AE%9E%E6%88%98%E2%80%94%E2%80%94%E8%A7%A3%E5%86%B3%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8%E9%AB%98%E9%97%AE%E9%A2%98/" title="JVM调优实战——解决内存占用高问题"><img class="cover" src="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-23</div><div class="title">JVM调优实战——解决内存占用高问题</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="comment-switch"><span class="first-comment">Valine</span><span class="switch-btn"></span><span class="second-comment">Disqus</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://ashleyblog.oss-cn-shenzhen.aliyuncs.com/avatar/lazysheep.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Palette</div><div class="author-info__description">这是一个终身学习的时代</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">54</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">49</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Palette-k"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Palette-k" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:1148432487@gq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MAT%E5%B7%A5%E5%85%B7%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">MAT工具简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">基础概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Heap-Dump"><span class="toc-number">1.1.1.</span> <span class="toc-text">Heap Dump</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shallow-Heap"><span class="toc-number">1.1.2.</span> <span class="toc-text">Shallow Heap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Retained-Heap"><span class="toc-number">1.1.3.</span> <span class="toc-text">Retained Heap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dominator-tree"><span class="toc-number">1.1.4.</span> <span class="toc-text">Dominator tree</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#QQL"><span class="toc-number">1.1.5.</span> <span class="toc-text">QQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#references"><span class="toc-number">1.1.6.</span> <span class="toc-text">references</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MAT%E5%8A%9F%E8%83%BD%E6%A6%82%E8%BF%B0"><span class="toc-number">2.</span> <span class="toc-text">MAT功能概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83%E8%AF%A6%E8%A7%A3%E5%8F%8A%E5%AE%9E%E6%88%98"><span class="toc-number">2.1.</span> <span class="toc-text">1 内存分布详解及实战</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Overview"><span class="toc-number">2.1.1.</span> <span class="toc-text">Overview</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dominator-tree-1"><span class="toc-number">2.1.2.</span> <span class="toc-text">Dominator tree</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Histogram-%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="toc-number">2.1.3.</span> <span class="toc-text">Histogram 直方图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Leak-Suspects"><span class="toc-number">2.1.4.</span> <span class="toc-text">Leak Suspects</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Top-Consumers"><span class="toc-number">2.1.5.</span> <span class="toc-text">Top Consumers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B%E4%B8%80"><span class="toc-number">2.1.6.</span> <span class="toc-text">综合案例一</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AF%B9%E8%B1%A1%E9%97%B4%E4%BE%9D%E8%B5%96%E8%AF%A6%E8%A7%A3%E5%8F%8A%E5%AE%9E%E6%88%98"><span class="toc-number">2.2.</span> <span class="toc-text">2 对象间依赖详解及实战</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#References"><span class="toc-number">2.2.1.</span> <span class="toc-text">References</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Thread-overview"><span class="toc-number">2.2.2.</span> <span class="toc-text">Thread overview</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Path-To-GC-Roots"><span class="toc-number">2.2.3.</span> <span class="toc-text">Path To GC Roots</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#class-loader-%E5%88%86%E6%9E%90"><span class="toc-number">2.2.4.</span> <span class="toc-text">class loader 分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B%E4%BA%8C"><span class="toc-number">2.2.5.</span> <span class="toc-text">综合案例二</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AF%B9%E8%B1%A1%E7%8A%B6%E6%80%81%E8%AF%A6%E8%A7%A3%E5%8F%8A%E5%AE%9E%E6%88%98"><span class="toc-number">2.3.</span> <span class="toc-text">3 对象状态详解及实战</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#inspector"><span class="toc-number">2.3.1.</span> <span class="toc-text">inspector</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E7%8A%B6%E6%80%81"><span class="toc-number">2.3.2.</span> <span class="toc-text">集合状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B%E4%B8%89"><span class="toc-number">2.3.3.</span> <span class="toc-text">综合案例三</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/07/14/uhr%E8%80%83%E5%8B%A4%E6%A8%A1%E5%9D%97%E6%A0%B8%E5%BF%83%E4%B8%9A%E5%8A%A1%E5%A4%84%E7%90%86%E9%80%BB%E8%BE%91/" title="uhr考勤"><img src="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="uhr考勤"/></a><div class="content"><a class="title" href="/2025/07/14/uhr%E8%80%83%E5%8B%A4%E6%A8%A1%E5%9D%97%E6%A0%B8%E5%BF%83%E4%B8%9A%E5%8A%A1%E5%A4%84%E7%90%86%E9%80%BB%E8%BE%91/" title="uhr考勤">uhr考勤</a><time datetime="2025-07-14T09:01:45.000Z" title="发表于 2025-07-14 17:01:45">2025-07-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/09/kubernetes/" title="kubernetes"><img src="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="kubernetes"/></a><div class="content"><a class="title" href="/2025/07/09/kubernetes/" title="kubernetes">kubernetes</a><time datetime="2025-07-09T08:43:45.000Z" title="发表于 2025-07-09 16:43:45">2025-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/09/docker%E7%9A%84%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/" title="docker的使用技巧"><img src="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker的使用技巧"/></a><div class="content"><a class="title" href="/2025/07/09/docker%E7%9A%84%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/" title="docker的使用技巧">docker的使用技巧</a><time datetime="2025-07-09T07:03:45.000Z" title="发表于 2025-07-09 15:03:45">2025-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/07/Redis%E5%AE%9E%E6%88%98%EF%BC%9A%E5%9C%BA%E6%99%AF%E8%AE%BE%E8%AE%A1/" title="Redis实战：场景设计"><img src="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redis实战：场景设计"/></a><div class="content"><a class="title" href="/2025/07/07/Redis%E5%AE%9E%E6%88%98%EF%BC%9A%E5%9C%BA%E6%99%AF%E8%AE%BE%E8%AE%A1/" title="Redis实战：场景设计">Redis实战：场景设计</a><time datetime="2025-07-07T02:40:26.000Z" title="发表于 2025-07-07 10:40:26">2025-07-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/19/Spring%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8E%9F%E7%90%86/" title="Spring循环依赖及解决原理"><img src="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring循环依赖及解决原理"/></a><div class="content"><a class="title" href="/2025/06/19/Spring%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8E%9F%E7%90%86/" title="Spring循环依赖及解决原理">Spring循环依赖及解决原理</a><time datetime="2025-06-19T02:28:27.000Z" title="发表于 2025-06-19 10:28:27">2025-06-19</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg2.png')"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2025 By Palette</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my blog!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script>function loadDisqus () {
+  const disqus_config = function () {
+    this.page.url = 'https://palette-k.github.io/2025/01/16/JVM%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7MAT%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/'
+    this.page.identifier = '/2025/01/16/JVM%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7MAT%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/'
+    this.page.title = 'JVM内存分析工具MAT的使用方式'
+  }
+
+  const disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  btf.addModeChange('disqus', disqusReset)
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Valine' === 'Disqus' || !true) {
+  if (true) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
