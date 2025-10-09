@@ -225,6 +225,26 @@
   </entry>
   
   <entry>
+    <title>销售提成合并滚动明细逻辑</title>
+    <link href="https://palette-k.github.io/2025/05/28/%E9%94%80%E5%94%AE%E6%8F%90%E6%88%90%E5%90%88%E5%B9%B6%E6%BB%9A%E5%8A%A8%E6%98%8E%E7%BB%86%E9%80%BB%E8%BE%91/"/>
+    <id>https://palette-k.github.io/2025/05/28/%E9%94%80%E5%94%AE%E6%8F%90%E6%88%90%E5%90%88%E5%B9%B6%E6%BB%9A%E5%8A%A8%E6%98%8E%E7%BB%86%E9%80%BB%E8%BE%91/</id>
+    <published>2025-05-28T11:28:26.000Z</published>
+    <updated>2025-07-09T06:09:21.669Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="销售提成合并滚动明细逻辑"><a href="#销售提成合并滚动明细逻辑" class="headerlink" title="销售提成合并滚动明细逻辑"></a>销售提成合并滚动明细逻辑</h1><h2 id="滚动明细"><a href="#滚动明细" class="headerlink" title="滚动明细"></a>滚动明细</h2><p>回款金额暂未发完的账单，会滚动到下一个工资月继续发放</p><p><img src="https://i0.hdslb.com/bfs/openplatform/06f807252c94f6304466fed3e58fdd3301fbd9e4.png" alt="image-20250709140851076"></p><h2 id="同步底表"><a href="#同步底表" class="headerlink" title="同步底表"></a>同步底表</h2><p>增量同步BI底表数据，系统自动给本次拉取的数据打上“工资月份”的标识，BPO(T+2),HRO(T+1)。</p><p><img src="https://i0.hdslb.com/bfs/openplatform/2d9552d9da8647d5ce51de4070692878b2540d24.png" alt="image-20250709140905455"></p><h2 id="合并明细"><a href="#合并明细" class="headerlink" title="合并明细"></a>合并明细</h2><p>合并时注意需保留用户编辑后的数据，部分字段需延用（自动带出）上个账单月的数值。</p><p><img src="https://i0.hdslb.com/bfs/openplatform/f43b2dc9cf0ae59d05e87d0fccf45dbf0230156f.png" alt="image-20250709140920033"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;销售提成合并滚动明细逻辑&quot;&gt;&lt;a href=&quot;#销售提成合并滚动明细逻辑&quot; class=&quot;headerlink&quot; title=&quot;销售提成合并滚动明细逻辑&quot;&gt;&lt;/a&gt;销售提成合并滚动明细逻辑&lt;/h1&gt;&lt;h2 id=&quot;滚动明细&quot;&gt;&lt;a href=&quot;#滚动明细&quot; cla</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>销售提成计算引擎实现</title>
     <link href="https://palette-k.github.io/2025/05/28/%E9%94%80%E5%94%AE%E6%8F%90%E6%88%90%E8%AE%A1%E7%AE%97%E5%BC%95%E6%93%8E%E5%AE%9E%E7%8E%B0/"/>
     <id>https://palette-k.github.io/2025/05/28/%E9%94%80%E5%94%AE%E6%8F%90%E6%88%90%E8%AE%A1%E7%AE%97%E5%BC%95%E6%93%8E%E5%AE%9E%E7%8E%B0/</id>
@@ -243,26 +263,6 @@
     
     
     <category term="QlExpress" scheme="https://palette-k.github.io/tags/QlExpress/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>销售提成合并滚动明细逻辑</title>
-    <link href="https://palette-k.github.io/2025/05/28/%E9%94%80%E5%94%AE%E6%8F%90%E6%88%90%E5%90%88%E5%B9%B6%E6%BB%9A%E5%8A%A8%E6%98%8E%E7%BB%86%E9%80%BB%E8%BE%91/"/>
-    <id>https://palette-k.github.io/2025/05/28/%E9%94%80%E5%94%AE%E6%8F%90%E6%88%90%E5%90%88%E5%B9%B6%E6%BB%9A%E5%8A%A8%E6%98%8E%E7%BB%86%E9%80%BB%E8%BE%91/</id>
-    <published>2025-05-28T11:28:26.000Z</published>
-    <updated>2025-07-09T06:09:21.669Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="销售提成合并滚动明细逻辑"><a href="#销售提成合并滚动明细逻辑" class="headerlink" title="销售提成合并滚动明细逻辑"></a>销售提成合并滚动明细逻辑</h1><h2 id="滚动明细"><a href="#滚动明细" class="headerlink" title="滚动明细"></a>滚动明细</h2><p>回款金额暂未发完的账单，会滚动到下一个工资月继续发放</p><p><img src="https://i0.hdslb.com/bfs/openplatform/06f807252c94f6304466fed3e58fdd3301fbd9e4.png" alt="image-20250709140851076"></p><h2 id="同步底表"><a href="#同步底表" class="headerlink" title="同步底表"></a>同步底表</h2><p>增量同步BI底表数据，系统自动给本次拉取的数据打上“工资月份”的标识，BPO(T+2),HRO(T+1)。</p><p><img src="https://i0.hdslb.com/bfs/openplatform/2d9552d9da8647d5ce51de4070692878b2540d24.png" alt="image-20250709140905455"></p><h2 id="合并明细"><a href="#合并明细" class="headerlink" title="合并明细"></a>合并明细</h2><p>合并时注意需保留用户编辑后的数据，部分字段需延用（自动带出）上个账单月的数值。</p><p><img src="https://i0.hdslb.com/bfs/openplatform/f43b2dc9cf0ae59d05e87d0fccf45dbf0230156f.png" alt="image-20250709140920033"></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;销售提成合并滚动明细逻辑&quot;&gt;&lt;a href=&quot;#销售提成合并滚动明细逻辑&quot; class=&quot;headerlink&quot; title=&quot;销售提成合并滚动明细逻辑&quot;&gt;&lt;/a&gt;销售提成合并滚动明细逻辑&lt;/h1&gt;&lt;h2 id=&quot;滚动明细&quot;&gt;&lt;a href=&quot;#滚动明细&quot; cla</summary>
-      
-    
-    
-    
     
   </entry>
   
@@ -463,9 +463,9 @@
     
     
     
-    <category term="netty" scheme="https://palette-k.github.io/tags/netty/"/>
-    
     <category term="JVM" scheme="https://palette-k.github.io/tags/JVM/"/>
+    
+    <category term="netty" scheme="https://palette-k.github.io/tags/netty/"/>
     
   </entry>
   
