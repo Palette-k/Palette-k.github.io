@@ -830,9 +830,9 @@
       
         <tags>
             
-            <tag> quartz </tag>
-            
             <tag> xxl-job </tag>
+            
+            <tag> quartz </tag>
             
         </tags>
       
