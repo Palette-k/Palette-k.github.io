@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://palette-k.github.io/2025/09/22/%E7%8E%A9%E8%BD%ACAI%E5%BA%94%E7%94%A8/</loc>
+    <loc>https://palette-k.github.io/2025/10/17/RocketMQ%E6%B6%88%E6%81%AF%E6%A8%A1%E5%9E%8B%E6%8F%90%E5%8D%87AI%E9%80%9A%E4%BF%A1%E6%95%88%E7%8E%87/</loc>
     
     <lastmod>2025-10-17</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://palette-k.github.io/2025/10/17/RocketMQ%E6%B6%88%E6%81%AF%E6%A8%A1%E5%9E%8B%E6%8F%90%E5%8D%87AI%E9%80%9A%E4%BF%A1%E6%95%88%E7%8E%87/</loc>
+    <loc>https://palette-k.github.io/2025/09/22/%E7%8E%A9%E8%BD%ACAI%E5%BA%94%E7%94%A8/</loc>
     
     <lastmod>2025-10-17</lastmod>
     
@@ -692,13 +692,6 @@
   </url>
   
   <url>
-    <loc>https://palette-k.github.io/tags/%E6%9E%B6%E6%9E%84/</loc>
-    <lastmod>2025-10-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://palette-k.github.io/tags/Redis/</loc>
     <lastmod>2025-10-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -707,6 +700,13 @@
   
   <url>
     <loc>https://palette-k.github.io/tags/%E7%BC%93%E5%AD%98/</loc>
+    <lastmod>2025-10-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://palette-k.github.io/tags/%E6%9E%B6%E6%9E%84/</loc>
     <lastmod>2025-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -769,13 +769,6 @@
   </url>
   
   <url>
-    <loc>https://palette-k.github.io/tags/k8s/</loc>
-    <lastmod>2025-10-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://palette-k.github.io/tags/jdbc/</loc>
     <lastmod>2025-10-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -804,6 +797,13 @@
   </url>
   
   <url>
+    <loc>https://palette-k.github.io/tags/k8s/</loc>
+    <lastmod>2025-10-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://palette-k.github.io/tags/%E4%B8%9A%E5%8A%A1/</loc>
     <lastmod>2025-10-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -818,14 +818,14 @@
   </url>
   
   <url>
-    <loc>https://palette-k.github.io/tags/xxl-job/</loc>
+    <loc>https://palette-k.github.io/tags/%E7%AE%97%E6%B3%95%EF%BC%8C%E4%B8%80%E8%87%B4%E6%80%A7%E5%93%88%E5%B8%8C/</loc>
     <lastmod>2025-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://palette-k.github.io/tags/%E7%AE%97%E6%B3%95%EF%BC%8C%E4%B8%80%E8%87%B4%E6%80%A7%E5%93%88%E5%B8%8C/</loc>
+    <loc>https://palette-k.github.io/tags/xxl-job/</loc>
     <lastmod>2025-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -853,7 +853,7 @@
   </url>
   
   <url>
-    <loc>https://palette-k.github.io/tags/%E5%9C%BA%E6%99%AF/</loc>
+    <loc>https://palette-k.github.io/tags/git/</loc>
     <lastmod>2025-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -867,14 +867,14 @@
   </url>
   
   <url>
-    <loc>https://palette-k.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+    <loc>https://palette-k.github.io/tags/%E5%9C%BA%E6%99%AF/</loc>
     <lastmod>2025-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://palette-k.github.io/tags/git/</loc>
+    <loc>https://palette-k.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
     <lastmod>2025-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -923,13 +923,6 @@
   </url>
   
   <url>
-    <loc>https://palette-k.github.io/tags/%E9%93%BE%E8%A1%A8/</loc>
-    <lastmod>2025-10-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://palette-k.github.io/tags/SpringBoot/</loc>
     <lastmod>2025-10-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -938,6 +931,13 @@
   
   <url>
     <loc>https://palette-k.github.io/tags/starter/</loc>
+    <lastmod>2025-10-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://palette-k.github.io/tags/%E9%93%BE%E8%A1%A8/</loc>
     <lastmod>2025-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1030,13 +1030,6 @@
   </url>
   
   <url>
-    <loc>https://palette-k.github.io/categories/RocketMQ/AI/</loc>
-    <lastmod>2025-10-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://palette-k.github.io/categories/SSE/</loc>
     <lastmod>2025-10-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -1086,6 +1079,13 @@
   </url>
   
   <url>
+    <loc>https://palette-k.github.io/categories/%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2025-10-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://palette-k.github.io/categories/xxl-job/</loc>
     <lastmod>2025-10-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -1093,7 +1093,7 @@
   </url>
   
   <url>
-    <loc>https://palette-k.github.io/categories/%E7%AE%97%E6%B3%95/</loc>
+    <loc>https://palette-k.github.io/categories/git/</loc>
     <lastmod>2025-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1108,13 +1108,6 @@
   
   <url>
     <loc>https://palette-k.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
-    <lastmod>2025-10-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://palette-k.github.io/categories/git/</loc>
     <lastmod>2025-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
